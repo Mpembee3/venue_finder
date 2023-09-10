@@ -25,16 +25,10 @@
                     <a class="nav-link" href="../index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../admin/admin_panel.php">Admin</a>
+                    <a class="nav-link" data-toggle="tooltip" data-placement="top" title="For registered users only" href="../admin/admin_panel.php">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CR</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Staff</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="venue/status.php">Status</a>
+                    <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Click here to view your reservation request status" href="venue/status.php">Status</a>
                 </li>
                 <!-- Add more navigation links as needed -->
             </ul>

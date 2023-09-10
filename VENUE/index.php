@@ -43,13 +43,6 @@
         <!-- <h1 class="text-center">Available Venues</h1> -->
         <!-- Venue filter options -->
         <div class="form-group filter-box p-3">
-            <label for="resources" class="text-white">Filter by Resources:</label>
-            <select id="resources" class="form-control">
-                <option value="">All</option>
-                <option value="projector">Projector</option>
-                <option value="sound">Sound System</option>
-                <!-- Add more resource options if needed -->
-            </select>
             <label for="college" class="mt-3 text-white">Filter by College:</label>
             <select id="college" class="form-control">
                 <option value="">All</option>
@@ -61,6 +54,13 @@
                 <option value="sjmc">SJMC</option>
                 <option value="cohu">COHU</option>
                 <!-- Add more college options if needed -->
+            </select>
+            <label for="resources" class="text-white">Filter by Resources:</label>
+            <select id="resources" class="form-control">
+                <option value="">All</option>
+                <option value="projector">Projector</option>
+                <option value="sound">Sound System</option>
+                <!-- Add more resource options if needed -->
             </select>
             <label for="capacity" class="mt-3 text-white">Filter by Capacity:</label>
             <input type="number" id="capacity" class="form-control" placeholder="Capacity Range" readonly>

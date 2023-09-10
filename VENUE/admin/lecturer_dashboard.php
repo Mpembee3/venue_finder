@@ -75,7 +75,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark_as_free"])) {
         }
         .assigned-classes {
             margin-bottom: 20px;
+            list-style: none;
+            padding-left: 0;
         }
+        .assigned-classes li {
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            background-color: #f3f3f3; /* Light gray background for list items */
+            border-radius: 5px;
+        }
+        
         table {
             width: 100%;
         }
@@ -96,9 +105,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark_as_free"])) {
         .mark-as-free-btn:hover {
             background-color: #ffcc33;
         }
+                /* Custom CSS for header */
+                .navbar-heading {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-logo {
+            max-height: 40px; /* Adjust the logo height as needed */
+        }
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../index.php">
+            <img src="../img/logo_ud.png" alt="Logo" class="navbar-logo"> <!-- Replace 'your-logo.png' with your logo image URL -->
+        </a>
+        <span class="navbar-heading">UDSM Venue Finder</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tooltip" data-placement="top"  href="../backend/logout.php">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <h1>Lecturer Dashboard</h1>
     
     <h2>Assigned Classes</h2>

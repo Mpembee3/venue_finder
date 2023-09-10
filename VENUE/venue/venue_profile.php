@@ -78,6 +78,20 @@ $conn->close();
             vertical-align: top;
             margin-right: 20px;
         }
+        /* Style for timetable columns */
+        .timetable-column {
+            margin-bottom: 20px;
+        }
+        /* Style for larger card */
+        .large-card {
+            max-width: 900px;
+            margin: 0 auto; /* Center the card */
+        }
+        /* Style for enlarged image */
+        .venue-image {
+            width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <!-- ... Previous code ... -->
@@ -85,31 +99,36 @@ $conn->close();
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Venue Profile</h1>
-        <div class="card">
-            <img src="<?php echo $image; ?>" class="card-img-top" alt="<?php echo $name; ?>">
-            <!-- Add a Google Maps link with coordinates and an icon -->
-<div class="card-body">
-    <h5 class="card-title"><?php echo $name; ?></h5>
-    <p class="card-text"><?php echo $description; ?></p>
-    <ul>
-        <li>Capacity: <?php echo $capacity; ?></li>
-        
-        <li>Resources: <?php echo $resources; ?></li>
-        <li>College: <?php echo $college; ?></li>
-    </ul>
-    <!-- Add a Google Maps link with coordinates and an icon -->
-    <div class="row">
-        <div class="col-md-6">
-            <a href="https://www.google.com/maps?q=<?php echo $latitude; ?>,<?php echo $longitude; ?>" target="_blank" class="btn btn-info">
-                <i class="fa fa-map-marker"></i> View on Google Maps
-            </a>
+        <div class="card large-card">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <img src="<?php echo $image; ?>" class="card-img venue-image" alt="<?php echo $name; ?>">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $name; ?></h5>
+                        <p class="card-text"><?php echo $description; ?></p>
+                        <ul>
+                            <li>Capacity: <?php echo $capacity; ?></li>
+                            <li>Resources: <?php echo $resources; ?></li>
+                            <li>College: <?php echo $college; ?></li>
+                        </ul>
+                        <!-- Add a Google Maps link with coordinates and an icon -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="https://www.google.com/maps?q=<?php echo $latitude; ?>,<?php echo $longitude; ?>" target="_blank" class="btn btn-info">
+                                    <i class="fa fa-map-marker"></i> View on Google Maps
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Button to request venue reservation -->
+                                <button class="btn btn-primary" id="reservationBtn">Request Reservation</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <!-- Button to request venue reservation -->
-            <button class="btn btn-primary" id="reservationBtn">Request Reservation</button>
-        </div>
-    </div>
-</div>
 
         <!-- Table to show detailed week timetable -->
         <h2 class="mt-4">Detailed Week Timetable</h2>
@@ -120,7 +139,7 @@ $conn->close();
 
                 if ($resultTimetable->num_rows > 0) {
                     while ($entry = $resultTimetable->fetch_assoc()) {
-                        echo '<div class="col-md-4">';
+                        echo '<div class="col-md-3 timetable-column">';
                         echo '<div class="card inline-content h-100">';
                         echo '<div class="card-body">';
                         echo '<h5 class="card-title">' . $entry['day'] . '</h5>';
@@ -134,10 +153,7 @@ $conn->close();
                     // No timetable entries found
                     echo '<p>No timetable entries available for this venue.</p>';
                 }
-
-                // ...
-             ?>
-
+            ?>
         </div>
 
         <!-- User Comments / Ratings Section -->
