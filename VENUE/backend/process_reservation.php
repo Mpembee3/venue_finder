@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form data
     $venueID = $_POST['venueID'];
     $name = $_POST['name'];
+    $identity=$_POST['identity'];
     $email = $_POST['email'];
     $date = $_POST['date'];
     $time = $_POST['time'];
@@ -15,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // You should perform validation on the data here to ensure it meets your requirements.
 
     // Insert reservation data into the database
-    $insertSql = "INSERT INTO reservations (venue_id, name, email, reservation_date, time_slot, comments)
-                  VALUES ('$venueID', '$name', '$email', '$date', '$time', '$comments')";
+    $insertSql = "INSERT INTO reservations (venue_id, name, identification, email, reservation_date, time_slot, comments)
+                  VALUES ('$venueID', '$name', '$identity','$email', '$date', '$time', '$comments')";
 
     if ($conn->query($insertSql) === TRUE) {
         // Reservation data inserted successfully

@@ -51,7 +51,7 @@ $venueID = $_GET['venueID'];
             
             <div class="form-group">
                 <label for="name">Identification Number:</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="NIN or Student ID or Staff ID " required>
+                <input type="text" class="form-control" id="name" name="identity" placeholder="NIN or Student ID or Staff ID " required>
             </div>
 
             <div class="form-group">

@@ -5,6 +5,7 @@ include '../resources/header.php';
 // Get venue ID from the URL parameter
 $venueID = $_GET['id'];
 
+
 // Query to retrieve venue details based on the ID
 $sql = "SELECT * FROM venues WHERE id = $venueID";
 
@@ -17,7 +18,8 @@ if ($result->num_rows > 0) {
     $name = $venue['name'];
     $description = $venue['description'];
     $capacity = $venue['capacity'];
-    $location = $venue['location'];
+    $longitude = $venue['longitude'];
+    $latitude = $venue['latitude'];
     $resources = $venue['resources'];
     $college = $venue['college'];
     $image = $venue['image'];
@@ -26,26 +28,18 @@ if ($result->num_rows > 0) {
     $name = "Venue not found";
     $description = "The requested venue does not exist.";
     $capacity = "";
-    $location = "";
+    // $location = "";
     $resources = "";
     $college = "";
     $image = "";
 }
 
-// Sample data for the weekly timetable
-$sampleWeekTimetable = [
-    [
-        'day' => 'Monday',
-        'time_slot' => '08:00 AM - 09:00 AM',
-        'activity' => 'CS174 - Introduction to Programming',
-    ],
-    [
-        'day' => 'Tuesday',
-        'time_slot' => '10:00 AM - 12:00 PM',
-        'activity' => 'MATH101 - Calculus',
-    ],
-    // Add more sample data as needed
-];
+   // Query to retrieve the detailed week timetable for the venue
+   $sqlTimetable = "SELECT day, time_slot, activity FROM timetable WHERE venue_name = '$name'";
+
+     // Execute the query
+  $resultTimetable = $conn->query($sqlTimetable);
+
 
 $conn->close();
 ?>
@@ -99,7 +93,7 @@ $conn->close();
     <p class="card-text"><?php echo $description; ?></p>
     <ul>
         <li>Capacity: <?php echo $capacity; ?></li>
-        <li>Location: <?php echo $location; ?></li>
+        
         <li>Resources: <?php echo $resources; ?></li>
         <li>College: <?php echo $college; ?></li>
     </ul>
@@ -120,19 +114,30 @@ $conn->close();
         <!-- Table to show detailed week timetable -->
         <h2 class="mt-4">Detailed Week Timetable</h2>
         <div class="row">
-            <?php
-            foreach ($sampleWeekTimetable as $entry) {
-                echo '<div class="col-md-4">';
-                echo '<div class="card inline-content h-100">';
-                echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $entry['day'] . '</h5>';
-                echo '<p class="card-text">' . $entry['time_slot'] . '</p>';
-                echo '<p class="card-text">' . $entry['activity'] . '</p>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-            }
-            ?>
+           <?php
+                // ...
+
+
+                if ($resultTimetable->num_rows > 0) {
+                    while ($entry = $resultTimetable->fetch_assoc()) {
+                        echo '<div class="col-md-4">';
+                        echo '<div class="card inline-content h-100">';
+                        echo '<div class="card-body">';
+                        echo '<h5 class="card-title">' . $entry['day'] . '</h5>';
+                        echo '<p class="card-text">' . $entry['time_slot'] . '</p>';
+                        echo '<p class="card-text">' . $entry['activity'] . '</p>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    // No timetable entries found
+                    echo '<p>No timetable entries available for this venue.</p>';
+                }
+
+                // ...
+             ?>
+
         </div>
 
         <!-- User Comments / Ratings Section -->

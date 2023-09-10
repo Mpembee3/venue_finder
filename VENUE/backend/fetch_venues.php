@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
         echo '<p class="card-text">' . $row['description'] . '</p>';
         echo '<ul>';
         echo '<li>Capacity: ' . $row['capacity'] . '</li>';
-        echo '<li>Location: ' . $row['location'] . '</li>';
+        // echo '<li>Location: ' . $row['location'] . '</li>';
         echo '<li>Resources: ' . $row['resources'] . '</li>';
         echo '<li>College: ' . $row['college'] . '</li>';
         echo '</ul>';

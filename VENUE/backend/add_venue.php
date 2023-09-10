@@ -3,10 +3,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
     $name = $_POST["name"];
     $capacity = $_POST["capacity"];
     $description = $_POST["description"];
-    $location = $_POST["location"];
+    // $location = $_POST["location"];
     $resources = $_POST["resources"];
     $college = $_POST["college"];
-
+    
+    // Capture latitude and longitude from user input
+    $latitude = $_POST["latitude"];
+    $longitude = $_POST["longitude"];
+    
     // File upload code
     $targetDirectory = "../img/"; // Directory where you want to store uploaded images
     $targetFile = $targetDirectory . basename($_FILES["image"]["name"]);
@@ -40,13 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
             // Insert data into the database (you should customize this part according to your database structure)
             require_once('db.php');
 
-
             // Prepare an INSERT statement (you should use prepared statements for security)
-            $sql = "INSERT INTO venues (name, capacity, description, location, resources, college, image)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO venues (name, capacity, description, latitude, longitude, resources, college, image)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("siissss", $name, $capacity, $description, $location, $resources, $college, $targetFile);
+            $stmt->bind_param("sissdsss", $name, $capacity, $description, $latitude, $longitude, $resources, $college, $targetFile);
 
             if ($stmt->execute()) {
                 echo "Venue added successfully.";
@@ -61,4 +64,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
         }
     }
 }
+
 ?>

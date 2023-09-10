@@ -134,7 +134,8 @@ if (!isset($_SESSION["user_id"])) {
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="location">Location:</label>
-                        <input type="text" id="location" name="location" class="form-control" required>
+                        <input type="text" id="location" name="latitude" class="form-control" placeholder="Latitude" required>
+                        <input type="text" id="location" name="longitude" class="form-control" placeholder="Longitude" required>
                     </div>
                 </div>
                 <div class="col-md-6">
