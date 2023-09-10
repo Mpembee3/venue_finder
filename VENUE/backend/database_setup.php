@@ -72,7 +72,7 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
-// Define the SQL query to create the reservations table
+// Define the SQL query to create the reservations table with a status column
 $createTableSql = "CREATE TABLE IF NOT EXISTS reservations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     venue_id INT NOT NULL,
@@ -81,9 +81,11 @@ $createTableSql = "CREATE TABLE IF NOT EXISTS reservations (
     reservation_date DATE NOT NULL,
     time_slot VARCHAR(50) NOT NULL,
     comments TEXT,
+    status ENUM('Pending', 'Accepted', 'Rejected') DEFAULT 'Pending', -- Add a status column
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (venue_id) REFERENCES venues(id)
 )";
+
 
 // Execute the SQL query to create the table
 if ($conn->query($createTableSql) === TRUE) {

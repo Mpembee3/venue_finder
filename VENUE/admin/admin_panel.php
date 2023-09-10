@@ -134,7 +134,8 @@ if (!isset($_SESSION["user_id"])) {
         // Define a SQL query to retrieve reservation requests with venue names
         $reservationSql = "SELECT reservations.*, venues.name AS venue_name 
                            FROM reservations 
-                           JOIN venues ON reservations.venue_id = venues.id";
+                           JOIN venues ON reservations.venue_id = venues.id
+                           WHERE reservations.status = 'pending'";
 
         // Execute the SQL query
         $result = $conn->query($reservationSql);
@@ -177,37 +178,38 @@ if (!isset($_SESSION["user_id"])) {
     <!-- Include Bootstrap and jQuery JavaScript from CDNs -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        // JavaScript functions to handle accepting and rejecting requests
-        function acceptRequest(requestId) {
-            // Send an AJAX request to your backend to accept the request
-            // You can implement this part using JavaScript or a JavaScript framework like jQuery
-            // After accepting, you may want to reload the card or update the UI as needed
-            // Example AJAX request:
-            // $.post('accept_request.php', { requestId: requestId }, function(response) {
-            //     if (response.success) {
-            //         // Request accepted successfully
-            //         // Reload the card or update the UI as needed
-            //     } else {
-            //         // Handle error
-            //     }
-            // });
+    <!-- Add this JavaScript code to your HTML file -->
+<script>
+// JavaScript functions to handle accepting and rejecting requests
+function acceptRequest(requestId) {
+    // Send an AJAX request to your backend to accept the request
+    $.post('../backend/accept_request.php', { requestId: requestId }, function(response) {
+        if (response.success) {
+            // Request accepted successfully
+            // Reload the card or update the UI as needed
+            location.reload(); // Reload the page to reflect changes
+        } else {
+            // Handle error
+            console.error('Error accepting request:', response.error);
         }
+    });
+}
 
-        function rejectRequest(requestId) {
-            // Send an AJAX request to your backend to reject the request
-            // You can implement this part using JavaScript or a JavaScript framework like jQuery
-            // After rejecting, you may want to reload the card or update the UI as needed
-            // Example AJAX request:
-            // $.post('reject_request.php', { requestId: requestId }, function(response) {
-            //     if (response.success) {
-            //         // Request rejected successfully
-            //         // Reload the card or update the UI as needed
-            //     } else {
-            //         // Handle error
-            //     }
-            // });
+function rejectRequest(requestId) {
+    // Send an AJAX request to your backend to reject the request
+    $.post('../backend/reject_request.php', { requestId: requestId }, function(response) {
+        if (response.success) {
+            // Request rejected successfully
+            // Reload the card or update the UI as needed
+            location.reload(); // Reload the page to reflect changes
+        } else {
+            // Handle error
+            console.error('Error rejecting request:', response.error);
         }
-    </script>
+    });
+}
+
+</script>
+
 </body>
 </html>

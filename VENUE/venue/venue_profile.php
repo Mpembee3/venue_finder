@@ -93,19 +93,29 @@ $conn->close();
         <h1 class="text-center">Venue Profile</h1>
         <div class="card">
             <img src="<?php echo $image; ?>" class="card-img-top" alt="<?php echo $name; ?>">
-            <div class="card-body">
-                <h5 class="card-title"><?php echo $name; ?></h5>
-                <p class="card-text"><?php echo $description; ?></p>
-                <ul>
-                    <li>Capacity: <?php echo $capacity; ?></li>
-                    <li>Location: <?php echo $location; ?></li>
-                    <li>Resources: <?php echo $resources; ?></li>
-                    <li>College: <?php echo $college; ?></li>
-                </ul>
-                <!-- Button to request venue reservation -->
-                <button class="btn btn-primary" id="reservationBtn">Request Reservation</button>
-            </div>
+            <!-- Add a Google Maps link with coordinates and an icon -->
+<div class="card-body">
+    <h5 class="card-title"><?php echo $name; ?></h5>
+    <p class="card-text"><?php echo $description; ?></p>
+    <ul>
+        <li>Capacity: <?php echo $capacity; ?></li>
+        <li>Location: <?php echo $location; ?></li>
+        <li>Resources: <?php echo $resources; ?></li>
+        <li>College: <?php echo $college; ?></li>
+    </ul>
+    <!-- Add a Google Maps link with coordinates and an icon -->
+    <div class="row">
+        <div class="col-md-6">
+            <a href="https://www.google.com/maps?q=<?php echo $latitude; ?>,<?php echo $longitude; ?>" target="_blank" class="btn btn-info">
+                <i class="fa fa-map-marker"></i> View on Google Maps
+            </a>
         </div>
+        <div class="col-md-6">
+            <!-- Button to request venue reservation -->
+            <button class="btn btn-primary" id="reservationBtn">Request Reservation</button>
+        </div>
+    </div>
+</div>
 
         <!-- Table to show detailed week timetable -->
         <h2 class="mt-4">Detailed Week Timetable</h2>
