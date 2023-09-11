@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
         echo '<div class="card">';
         echo '<img src="' . $row['image'] . '" class="card-img-top" alt="' . $row['name'] . '">';
         echo '<div class="card-body">';
-        echo '<h5 class="card-title" data-toggle="tooltip" data-placement="top" title="Click here to view profile">' . $row['name'] . '</h5>';
+        echo '<h5 class="card-title" data-venue-id="' . $row['id'] . '" data-toggle="tooltip" data-placement="top" title="Click here to view profile">' . $row['name'] . '</h5>';
          echo '<p class="card-text">' . $row['description'] . '</p>';
         echo '<ul>';
         echo '<li>Capacity: ' . $row['capacity'] . '</li>';
