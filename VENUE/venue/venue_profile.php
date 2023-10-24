@@ -117,7 +117,7 @@ $conn->close();
                         <div class="row">
                             <div class="col-md-6">
                                 <a href="https://www.google.com/maps?q=<?php echo $latitude; ?>,<?php echo $longitude; ?>" target="_blank" class="btn btn-info">
-                                    <i class="fa fa-map-marker"></i> View on Google Maps
+                                    <i class="fa fa-map-marker"></i> View Location
                                 </a>
                             </div>
                             <div class="col-md-6">

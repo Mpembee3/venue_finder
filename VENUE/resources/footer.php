@@ -39,17 +39,17 @@
             <div class="row">
                 <div class="col-md-4">
                     <h4 class="footer-heading">Contact Us</h4>
-                    <p class="footer-contact">Email: contact@yourwebsite.com</p>
-                    <p class="footer-contact">Phone: +1 (123) 456-7890</p>
-                    <p class="footer-contact">Address: 123 Main Street, City</p>
+                    <p class="footer-contact">Email: udsmvenuefinder@goaldiggers.com</p>
+                    <p class="footer-contact">Phone: +255 123 456 789</p>
+                    <p class="footer-contact">Address: CoICT Sayansi,Kijitonyama City</p>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="footer-heading">About Venue Finder</h4>
-                    <p class="footer-contact">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero in urna tristique.</p>
+                    <h4 class="footer-heading"></h4>
+                    <p class="footer-contact"></p>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="footer-heading">How to Use</h4>
-                    <p class="footer-contact">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero in urna tristique.</p>
+                    <h4 class="footer-heading"></h4>
+                    <p class="footer-contact"></p>
                 </div>
             </div>
         </div>
